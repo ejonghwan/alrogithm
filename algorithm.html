@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        // 곱과 합
+        let value = null;
+        let value2 = 1;
+
+        for(var i = 0; i < 101; i++) {
+            value += i;
+        }
+
+        for(var i = 1; i < 6; i++) {
+            value2 *= i;
+        }
+
+        console.log(value, value2)
+
+        function f(n) {
+            if(n <= 1) {
+                return 1
+            }
+            return n + f(n-1)
+        }
+
+        console.log('재귀: ', f(100))
+        
+        let n = 101;
+        console.log('수학공식: ', n*(n-1)/2);
+
+
+
+    </script>
+</body>
+</html>
