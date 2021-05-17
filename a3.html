@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        //문자열 반대로
+        
+        // 1
+        let str = 'abcdefg'
+        console.log(Array.from(str).reverse().join(''))
+        
+        // 2
+        let str2 = 'abcdefg'
+        let max = str.length;
+        let result = ''
+        for(let i = 0; i < max; i++) {
+            let arr = Array.from(str2)
+            let last = arr.pop();
+            str2 = arr.join('')
+            result += last
+            
+        }
+        console.log(result)
+
+        // 3
+        let str3 = 'abcdefg'
+        function recursion(n) {
+            if(n.length === 0) {
+                return '끝'
+            }
+
+            return n[n.length-1] + recursion(Array.from(n).slice(0, n.length-1))
+        }
+
+        console.log(`재귀: ${recursion(str3)}`)
+
+
+    </script>
+</body>
+</html>
