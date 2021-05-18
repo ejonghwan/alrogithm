@@ -34,9 +34,44 @@
 
             return fibo(n - 1) + fibo(n - 2)
         }
-        // 4 + 3
-        // 3 + 1
-        console.log(fibo(5))
+
+        // 5           5
+        // 4      3    3
+        // 3      2    2
+        // 2      1    1
+        // 1           1
+ 
+        console.log(fibo(6))
+
+
+
+
+
+
+
+
+        
+
+        var numb = [ 3, 1, 4, 1, 5, 9];
+        function recursive(acc, arr) {
+            if(arr.length === 0) {
+                console.log('if', acc) //??왜 여기가 23일까 ?
+                return acc
+            }
+            return recursive(acc + arr[0], arr.slice(1))
+        }
+
+        // 0 + 3, [ 3, 1, 4, 1, 5, 9]   length 5
+        // 3 + 1, [ 1, 4, 1, 5, 9]      length 4
+        // 4 + 4, [ 4, 1, 5, 9]         length 3   
+        // 8 + 1, [ 1, 5, 9]            length 2
+        // 9 + 5, [ 5, 9]               length 1
+        // 14 + 9, [ 9]                 length 0
+        // 23
+
+
+
+        console.log(recursive(0, numb))
     
 
 
