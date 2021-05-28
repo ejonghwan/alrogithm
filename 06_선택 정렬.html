@@ -24,6 +24,55 @@
         // console.log(newArr)
         
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var arr2 = [10, 3, 5, 11, 50, 35, 30] 
+        var max2 = arr2.length;
+        var re = []
+
+        // for(var i = 0; i < max2; i++) {
+        //     re.push(Math.min.apply(null, arr2))
+        //     arr2.splice(arr2.indexOf(Math.min.apply(null, arr2)), 1)
+        // }
+
+        // console.log('arr2:', re)
+
+
+
+        var minmax = arr2.reduce(function(h, cur) {
+            console.log('??', h)
+            return h > cur ? h : cur
+        })
+
+        // 10 < 3   3
+        // 10 < 5   5
+        // 10 < 11  10
+
+
+        console.log(minmax)
+
+
+
+
+
+
+
+
+
        
 
 
