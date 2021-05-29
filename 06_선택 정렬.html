@@ -52,18 +52,22 @@
         // console.log('arr2:', re)
 
 
-
+        var cc = []
         var minmax = arr2.reduce(function(h, cur) {
-            console.log('??', h)
-            return h > cur ? h : cur
+            console.log('??', h) //리턴을 안하면 h는 첫번쨰 값 
+            // return h > cur ? h : cur //리턴을 하면 리턴하는 값이 h값
+            return 5
+            // return h === 51 ? h : cur
         })
 
-        // 10 < 3   3
-        // 10 < 5   5
-        // 10 < 11  10
+        // 10 > 3   10
+        // 10 > 5   10
+        // 10 > 11  11
+        // 11 > 50  50 
+        // 50 > 35  50
+        // 50 > 30  50
 
-
-        console.log(minmax)
+        console.log('최종값 :', minmax)
 
 
 
