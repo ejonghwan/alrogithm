@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function b(arr) {
+            let max = arr.length;
+            if(max <= 1) {
+                return arr
+            }
+
+            let middle = parseInt(arr/2)
+            let g1 = b(arr.slice(0, middle))
+            let g2 = b(arr.slice(middle, ))
+            return  `g1: ${g1}, g2: ${g2}`
+        }
+
+        console.log(b([3,47,6,11,33,1,31]))
+    </script>
+
+</body>
+</html>
