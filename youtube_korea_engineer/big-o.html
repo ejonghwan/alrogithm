@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    빅오란? 
+    - 알고리즘의 시간과 공간복잡도를 표현. 
+    - 러닝타임 표시라기보단 데이터나 사용자 증가율에 따른 알고리즘 성능을 예측하기 때문에 상수와 같은 숫자는 모두 1
+
+
+    1.  O(1) - constant time.. 오원 표기법
+    입력 데이터의 크기와 상관없이 언제나 일정한 시간이 걸리는 알고리즘을 말함
+    <script>
+        function o1(n = []) {
+            // n의 첫번째 배열이 0인지 밝혀내는건 언제나 동일한 속도이기 떄문에 O(1)의 시간복잡도를 가진다고 말함.
+            // 데이터가 뒤에 몇개가 추가되던 성능의 변화가 없음.
+            return (n[0] === 0) ? true : false;
+        }
+    </script>
+    
+
+    2. O(n) - linear time .. 오엔 표기법
+    입력받은 데이터의 크기에 따라 처리시간이 걸리는 알고리즘 표기법 
+    <script>
+        function on(n = []) {
+            // n의 개수에 따라 처리시간이 늘어나는 알고리즘.
+            // 넘겨받은 n개가 50개에서 100개가 되면 그만큼 복잡도는 올라감. n이 하나씩 늘어날떄마다 늘어남.
+            
+            for(let i = 0; i < n.length; i++) {
+                return i
+            }
+        }
+    </script>
+
+
+    3. O(n2) - quadratic time.. 오엔스퀘어
+    중첩for문. n을 돌리면서 그 안에서 n으로 또 루프를 돌림. 
+    데이터가 증가할때마다 수직상승함. 
+    <script>
+        function on2(n = []) {
+            for(let i = 0; i < n.length; i++) {
+                for(let j = 0; j < n.length; j++) {
+                    return i + j
+                }
+            }
+        }
+    </script>
+
+
+    4. O(nm) - quadratic time .. 오엔엠 
+    중첩for문. n을 돌면서 m만큼 다시 돌림.
+    O(n2)이랑 비슷하지만 다름. m이 작을 수도 클수도 있음
+    <script>
+        function onm(n = [], m = []) {
+            for(let i = 0; i < n.length; i++) {
+                for(let j = 0; j < m.length; j++) {
+                    return i + j
+                }
+            }
+        }
+    </script> 
+
+
+    5. O(n3) - polynomial / cubic time ..오엔세제곱
+
+    O(n)은 가로축만 
+    O(n2)은 가로를 돌며 세로축도 생기니 x,y
+    O(n3)은 가로를 돌며 세로축도 돌고 그 안에 공간도 생기니 큐빅모양이 됨. 
+
+    데이터가 늘어날떄마다 처리시간이 급격하게 수직상승하게됨.
+
+    <script>
+        function on3(n = []) {
+            for(let i = 0; i < n.length; i++) {
+                for(let j = 0; j < n.length; j++) {
+                    for(let k = 0; k < n.length; k++) {
+                        return i + j + k 
+                    }
+                }
+            }
+        }
+    </script>
+
+    6. O(2n) - exponential time - 이에 엔승  (피보나치)
+    1, 1 을 더한 2
+       1, 2 를 더한 3
+          2, 3을 더한 5 
+             3, 5를 더한 8 
+    바로 앞의 숫자와 현재숫자를 더하여 다음 숫자를 만들어내는 피보나치 수열
+    
+    O(n2)나 O(n3) 보다 데이터가 증가함에 따라 처리시간이 엄청나게 극 수직 상승함
+
+    <script>
+        function o2n(n, r) {
+            if(n <= 0) return 0;
+            else if(n === 1) return r[n] = 1
+            return r[n] = o2n(n - 1, r) + o2n(n - 2, r)
+
+        }
+    </script>
+
+    7. O(mn) - exponential time 
+    2대신에 m을 써서 표기 
+    
+
+    8. O(log n) - binary search  
+    대표적인건 2진 검색
+
+    [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    key? === 6
+    1. 가운데 값을 찾아 키값(6)와 비교
+    2. 키값이 가운데값보다 더 크니 아래는 안봐도됨. 1,2,3,4,5
+    3. 뒷쪽의 데이터값들의 중간값을 찾아 다시 키값(6)과 비교
+    4. 키값 6이 중간값 7보다 작으니 찾음.
+
+    그래프를 보면 O(log n)이 O(n) 보다도 시간복잡도가 더 적게들음. 데이터가 늘어나도 성능이 크게 차이가 안남.
+
+    <script>
+        function ologn(k, arr, start, end) {
+            if(start > end) return -1;
+            m = (start + end) / 2;
+            if(arr[m] === k) return m ;
+            else if(arr[m] > k) return ologn(k, arr, start, m - 1);
+            else return ologn(k, arr, m + 1, end)
+        }
+    </script>
+
+
+
+
+
+    
+    
+
+
+</body>
+</html>
