@@ -103,12 +103,12 @@
         }
     </script>
 
-    7. O(mn) - exponential time 
+    7. O(mn제곱) - exponential time 
     2대신에 m을 써서 표기 
     
 
     8. O(log n) - binary search  
-    대표적인건 2진 검색
+    대표적인 2진 검색
 
     [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -121,17 +121,82 @@
     그래프를 보면 O(log n)이 O(n) 보다도 시간복잡도가 더 적게들음. 데이터가 늘어나도 성능이 크게 차이가 안남.
 
     <script>
-        function ologn(k, arr, start, end) {
+        var arr = ['가','나','다','라','마','바','사','아','차','카','타']
+        function ologn(key, arr, start, end) {
             if(start > end) return -1;
-            m = (start + end) / 2;
-            if(arr[m] === k) return m ;
-            else if(arr[m] > k) return ologn(k, arr, start, m - 1);
-            else return ologn(k, arr, m + 1, end)
+            m = Math.ceil((start + end) / 2);
+            if(arr[m] === key) return m ;
+            else if(arr[m] > key) return ologn(key, arr, start, m - 1);
+            else return ologn(key, arr, m + 1, end)
         }
+
+
+        
     </script>
 
 
 
+    9. O(sqrt(n)) - 오 스퀘어 루트 엔
+    100의 제곱근은 10 = 10 x 10
+    9의 제곱근은 3 = 3 x 3 
+
+
+    만약 n = 4 라면 
+    1 2
+    3 4  위에 한줄이 제곱근
+
+    만약 n = 9 라면 
+    1 2 3 
+    4 5 6 
+    7 8 9  위에 한줄이 제곱근
+
+    만약 n = 16 
+    1 2 3 4 
+    5 6 7 8 
+    9 10 11 12 
+    13 14 15 16  위에 한줄이 제곱근
+
+    이렇게 위에 제곱근만 돌리는 알고리즘이 빅오 표기법으로 하면 스퀘어 루트 엔 알고리즘
+
+
+
+
+    10. 빅오에서는 상수값은 과감히 버림. 
+
+    아래 코드는 원래 n만큼 두번 돌리기 떄문에 O(2n) 이지만 
+    빅오에서는 O(n)으로 표기함. 
+    
+    빅오표기법은 실제 알고리즘의 러닝타임을 재기위한게 아니라 
+    장기적으로 데이터가 증가함에 따라 처리시간이 증가함을 예측하기 위해 만든 표기법이기 떄문
+
+    아래 코드는 중첩되지 않았기떄문에 시간복잡도는 O(n) 
+    <script>
+        function on11(n = []) {
+            for(let i = 0; i < n.length; i++) {
+                console.log(i)
+            }
+            for(let i = 0; i < n.length; i++) {
+                console.log(i)
+            }
+        }
+    </script>
+
+
+    마찬가지로 O(n2+n2) 도 두번 돌리지만 O(n2) 으로 표기 
+    <script>
+        function on11(n = []) {
+            for(let i = 0; i < n.length; i++) {
+                for(let j = 0; j < n.length; j++) {
+                    console.log(i + j)   
+                }
+            }
+            for(let i = 0; i < n.length; i++) {
+                for(let j = 0; j < n.length; j++) {
+                    console.log(i + j)   
+                }
+            }
+        }
+    </script>
 
 
     
