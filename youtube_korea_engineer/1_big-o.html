@@ -121,7 +121,8 @@
     그래프를 보면 O(log n)이 O(n) 보다도 시간복잡도가 더 적게들음. 데이터가 늘어나도 성능이 크게 차이가 안남.
 
     <script>
-        var arr = ['가','나','다','라','마','바','사','아','차','카','타']
+        var arr = [{idx: 0, key: "hoho3"}, {idx: 1, key: "hoho5"}, {idx: 2, key: "hoho6"}, {idx: 3, key: "hoho7"}, {idx: 4, key: "hoho23"}, {idx: 5, key: "hoho32"}, {idx: 6, key: "hoho11"}, {idx: 7, key: "hoho42"}, {idx: 8, key: "hoho422"}, {idx: 9, key: "hoho421"}, {idx: 10, key: "hoho432"}]
+
         function ologn(key, arr, start, end) {
             if(start > end) return -1;
             m = Math.ceil((start + end) / 2);
@@ -131,7 +132,8 @@
         }
 
 
-        
+        console.log( ologn(6, arr, 0, arr.length) )
+
     </script>
 
 
