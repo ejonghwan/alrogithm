@@ -126,13 +126,23 @@
         function ologn(key, arr, start, end) {
             if(start > end) return -1;
             m = Math.ceil((start + end) / 2);
-            if(arr[m] === key) return m ;
+            if(arr[m] === key) return arr[m] ;
             else if(arr[m] > key) return ologn(key, arr, start, m - 1);
             else return ologn(key, arr, m + 1, end)
         }
 
 
-        console.log( ologn(6, arr, 0, arr.length) )
+        // console.log( ologn('hoho11', arr, arr[0].idx, arr[arr.length-1].idx) )
+
+        function test1(n, arr, key) {
+            if(n <= 0) return -1;
+            if(arr[n] === key) return arr[n]
+            else test1(n - 1, arr, key)
+            console.log(arr[n])
+        }   
+
+        const aa = test1(arr.length, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'aa', 'bb', 'cc', 'dd', 'ee'], 'c')
+        console.log('asd?', aa)
 
     </script>
 
