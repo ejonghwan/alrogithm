@@ -135,10 +135,16 @@
         // console.log( ologn('hoho11', arr, arr[0].idx, arr[arr.length-1].idx) )
 
         function test1(n, arr, key) {
+            
+            console.log(arr[n], n)
             if(n <= 0) return -1;
-            if(arr[n] === key) return arr[n]
-            else test1(n - 1, arr, key)
-            console.log(arr[n])
+
+            if(arr[n] === key) {
+                console.log('같음')
+                return arr[n]
+            } else {
+                test1(n - 1, arr, key)
+            }
         }   
 
         const aa = test1(arr.length, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'aa', 'bb', 'cc', 'dd', 'ee'], 'c')
