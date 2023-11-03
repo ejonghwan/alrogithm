@@ -147,8 +147,24 @@
             }
         }   
 
-        const aa = test1(arr.length, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'aa', 'bb', 'cc', 'dd', 'ee'], 'c')
-        console.log('asd?', aa)
+        // const aa = test1(arr.length, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'aa', 'bb', 'cc', 'dd', 'ee'], 'c')
+        // console.log('asd?', aa)
+
+
+        const arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'aa', 'bb', 'cc', 'dd', 'ee']
+        function hoho1() {
+            for(let i = 0; i < arr1.length; i++) {
+                console.log(arr1[i])
+                if(arr1[i] === 'c') {
+                    // return arr[i]
+                    break
+                }
+            }
+        }
+
+        hoho1();
+
+
 
     </script>
 
