@@ -10,8 +10,11 @@ const __filename = fileURLToPath(import.meta.url);
 
 app.listen(port, () => {
     console.log('app listen!');
-    const testfile = fs.readFileSync(dirname(__filename) + '/t.txt', { encoding: 'utf-8', flag: 'r' })
+    const testfile = fs.readFileSync(`${dirname(__filename)}/txt/test.txt`, { encoding: 'utf-8', flag: 'r' })
     console.log('??', testfile)
     // console.log('??', dirname(`${__filename}`))
     // console.log(dirname(__filename) + '/t.txt')
 })
+
+
+
