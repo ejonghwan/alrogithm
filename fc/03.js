@@ -30,44 +30,78 @@
 
         
 
-        var arr = [10, 3, 5, 11, 50, 35, 30, 42]
+        // var arr = [10, 3, 5, 11, 50, 35, 30, 42]
 
-        // g1 한갈래 
-        // g2 한갈래 계속 2개씩 
+        // // g1 한갈래 
+        // // g2 한갈래 계속 2개씩 
         
-        function b(arr1) {
-            var len = arr1.length
-            var result = []
-            if(len <= 1) {
-                return arr1
-            }
+        // function b(arr1) {
+        //     var len = arr1.length
+        //     var result = []
+        //     if(len <= 1) {
+        //         return arr1
+        //     }
 
-            var middle = parseInt(len/2)
-            var g1 = b(arr1.slice(0, middle))
-            var g2 = b(arr1.slice(middle, ))
+        //     var middle = parseInt(len/2)
+        //     var g1 = b(arr1.slice(0, middle))
+        //     var g2 = b(arr1.slice(middle, ))
             
 
-            while(g1.length !== 0 && g2.length !== 0) {
-                if(g1[0] < g2[0]) {
-                    result.push(g1.shift())
+        //     while(g1.length !== 0 && g2.length !== 0) {
+        //         if(g1[0] < g2[0]) {
+        //             result.push(g1.shift())
+        //         } else {
+        //             result.push(g2.shift())
+        //         }
+        //     }
+
+        //     while(g1.length !== 0) {
+        //         result.push(g1.shift())
+        //     }
+
+        //     while(g2.length !== 0) {
+        //         result.push(g2.shift())
+        //     }
+
+
+
+        //     // return `g1: ${g1} / g2: ${g2} \n` 
+        //     return result
+
+        // }
+
+        // console.log(b(arr))
+
+
+          
+        var arr = [10, 3, 5, 11, 50, 7, 35, 23, 30, 42]
+
+        /* 
+            [10, 3, 5, 11, 50, 35, 30, 42]
+
+            
+            
+        */ 
+
+        function ba(array) {
+            let max = array.length;
+            if(max <= 1) {
+                return array;
+            }
+
+            let fibo = [array.shift()]
+            let g1 = []
+            let g2 = []
+
+            for(let i in array) {
+                if(array[i] < fibo) {
+                    g1.push(array[i])
                 } else {
-                    result.push(g2.shift())
+                    g2.push(array[i])
                 }
             }
 
-            while(g1.length !== 0) {
-                result.push(g1.shift())
-            }
-
-            while(g2.length !== 0) {
-                result.push(g2.shift())
-            }
-
-
-
-            // return `g1: ${g1} / g2: ${g2} \n` 
-            return result
-
+            return ba(g1).concat(fibo, ba(g2))
         }
 
-        console.log(b(arr))
+        console.log(ba(arr))
