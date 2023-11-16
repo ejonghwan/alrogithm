@@ -39,6 +39,63 @@
     4. 10,000,000 인경우 O(N) 설계
 
 
+    <style>
+        li.on {background-color: red;}
+    </style>
+
+    <section>
+        <ul>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+    </section>
+
+
+    <script>
+
+
+        const ul = document.querySelector('ul');
+        const lis = document.querySelectorAll('li')
+
+        console.log(ul, lis)
+
+        
+        for(let i = 0; i < lis.length; i++) {
+            // lis[i].classList.remove('on')
+            lis[i].addEventListener('click', e => {
+                for(let j = 0; j < lis.length; j++) {
+                    lis[j].classList.remove('on')
+                }
+                lis[i].classList.add('on')
+            })
+        }
+
+        
+
+        const ui = (function(){
+
+            function hoho() {
+                return 1
+            }
+
+            return {
+                hoho: hoho
+            }
+
+        })()
+
+        console.log( ui.hoho() )
+
+        
+
+
+    </script>
 
 
 </body>
