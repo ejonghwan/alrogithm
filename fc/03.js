@@ -203,39 +203,65 @@
         
 
 
-        function solution(board){  
-            let answer=0;
-            let n=board.length;
-            let dx=[-1, -1, 0, 1, 1, 1, 0, -1];
-            let dy=[0, 1, 1, 1, 0, -1, -1, -1];
-            function DFS(x, y){
-               board[x][y]=0;
-               for(let k=0; k<8; k++){
-                   let nx=x+dx[k];
-                   let ny=y+dy[k];
-                   if(nx>=0 && nx<n && ny>=0 && ny<n && board[nx][ny]===1){
-                       DFS(nx, ny);
-                   }
-               } 
-            }
-            for(let i=0; i<n; i++){
-                for(let j=0; j<n; j++){
-                    if(board[i][j]===1){
-                        board[i][j]=0;
-                        answer++;
-                        DFS(i, j);
-                    }
+        // function solution(board){  
+        //     let answer=0;
+        //     let n=board.length;
+        //     let dx=[-1, -1, 0, 1, 1, 1, 0, -1];
+        //     let dy=[0, 1, 1, 1, 0, -1, -1, -1];
+        //     function DFS(x, y){
+        //        board[x][y]=0;
+        //        for(let k=0; k<8; k++){
+        //            let nx=x+dx[k];
+        //            let ny=y+dy[k];
+        //            if(nx>=0 && nx<n && ny>=0 && ny<n && board[nx][ny]===1){
+        //                DFS(nx, ny);
+        //            }
+        //        } 
+        //     }
+        //     for(let i=0; i<n; i++){
+        //         for(let j=0; j<n; j++){
+        //             if(board[i][j]===1){
+        //                 board[i][j]=0;
+        //                 answer++;
+        //                 DFS(i, j);
+        //             }
+        //         }
+        //     }
+        //     return answer;
+        // }
+
+        // let arr=[[1, 1, 0, 0, 0, 1, 0], 
+        //          [0, 1, 1, 0, 1, 1, 0],
+        //          [0, 1, 0, 0, 0, 0, 0],
+        //          [0, 0, 0, 1, 0, 1, 1],
+        //          [1, 1, 0, 1, 1, 0, 0],
+        //          [1, 0, 0, 0, 1, 0, 0],
+        //          [1, 0, 1, 0, 1, 0, 0]];
+
+        // console.log(solution(arr));
+
+
+
+        // 최대 점수 구하기 
+        function solution(m, ps, pt){         
+            let answer=Number.MIN_SAFE_INTEGER;
+            let n=ps.length;
+            function DFS(L, sum, time){
+                if(time>m) return;
+                if(L===n){
+                    answer=Math.max(answer, sum);
                 }
+                else{
+                    DFS(L+1, sum+ps[L], time+pt[L]);
+                    DFS(L+1, sum, time);
+                }   
             }
+
+            DFS(0, 0, 0);
             return answer;
         }
 
-        let arr=[[1, 1, 0, 0, 0, 1, 0], 
-                 [0, 1, 1, 0, 1, 1, 0],
-                 [0, 1, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 1, 0, 1, 1],
-                 [1, 1, 0, 1, 1, 0, 0],
-                 [1, 0, 0, 0, 1, 0, 0],
-                 [1, 0, 1, 0, 1, 0, 0]];
+        let ps=[10, 25, 15, 6, 7];
+        let pt=[5, 12, 8, 3, 4]
+        console.log(solution(20, ps, pt));
 
-        console.log(solution(arr));
