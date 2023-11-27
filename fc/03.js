@@ -284,22 +284,36 @@
             // console.log(solution(1));
 
         
-            function solution(s){  
-                let answer;
-                let sH = new Map();
-                for(let x of s){
-                    if(sH.has(x)) sH.set(x, sH.get(x)+1);
-                    else sH.set(x, 1);
-                }
-                let max=Number.MIN_SAFE_INTEGER;
-                for(let [key, val] of sH){
-                    if(val>max){
-                        max=val;
-                        answer=key;
-                    }
+            // function solution(s){  
+            //     let answer;
+            //     let sH = new Map();
+            //     for(let x of s){
+            //         if(sH.has(x)) sH.set(x, sH.get(x)+1);
+            //         else sH.set(x, 1);
+            //     }
+            //     let max=Number.MIN_SAFE_INTEGER;
+            //     for(let [key, val] of sH){
+            //         if(val>max){
+            //             max=val;
+            //             answer=key;
+            //         }
+            //     }
+            //     return answer;
+            // }
+
+            // let str="BACBACCACCBDEDE";
+            // console.log(solution(str));
+
+
+            function solution(arr){
+                let answer=[];
+                let sortArr=arr.slice();
+                sortArr.sort((a, b)=>a-b);
+                for(let i=0; i<arr.length; i++){
+                    if(arr[i]!==sortArr[i]) answer.push(i+1);
                 }
                 return answer;
             }
 
-            let str="BACBACCACCBDEDE";
-            console.log(solution(str));
+            let arr=[120, 125, 152, 130, 135, 135, 143, 127, 160];
+            console.log(solution(arr));
