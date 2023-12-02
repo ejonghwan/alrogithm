@@ -344,28 +344,43 @@
 
             
 
-            function solution(s, e){  
-                let answer=0;
-                let ch=Array.from({length:10001}, ()=>0);
-                let queue=[];
-                queue.push(s);
-                ch[s]=1;
-                let L=0;
-                while(queue.length){
-                    let len=queue.length;
-                    for(let i=0; i<len; i++){
-                        let x=queue.shift();
-                        for(let nx of [x-1, x+1, x+5]){
-                            if(nx===e) return L+1;
-                            if(nx>0 && nx<=10000 && ch[nx]===0){
-                                ch[nx]=1;
-                                queue.push(nx);
-                            }
-                        }
-                    }
-                    L++;
-                }
+            // function solution(s, e){  
+            //     let answer=0;
+            //     let ch=Array.from({length:10001}, ()=>0);
+            //     let queue=[];
+            //     queue.push(s);
+            //     ch[s]=1;
+            //     let L=0;
+            //     while(queue.length){
+            //         let len=queue.length;
+            //         for(let i=0; i<len; i++){
+            //             let x=queue.shift();
+            //             for(let nx of [x-1, x+1, x+5]){
+            //                 if(nx===e) return L+1;
+            //                 if(nx>0 && nx<=10000 && ch[nx]===0){
+            //                     ch[nx]=1;
+            //                     queue.push(nx);
+            //                 }
+            //             }
+            //         }
+            //         L++;
+            //     }
+            //     return answer;
+            // }
+
+            // console.log(solution(5, 14));
+
+
+            function solution(k, arr){
+                let answer, sum=0;
+                for(let i=0; i<k; i++) sum+=arr[i];
+                answer=sum;
+                for(let i=k; i<arr.length; i++){
+                    sum+=(arr[i]-arr[i-k]);
+                    answer=Math.max(answer, sum);
+                }                    
                 return answer;
             }
-
-            console.log(solution(5, 14));
+            
+            let a=[12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+            console.log(solution(3, a));
