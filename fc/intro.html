@@ -94,22 +94,6 @@
 
         
 
-        const lis = document.querySelectorAll('li');
-        const conts = document.querySelectorAll('.conts > section')
-
-
-        for(let i = 0; i < lis.length; i++) {
-            lis[i].addEventListener('click', e => {
-                for(let j = 0; j < lis.length; j++) {
-                    lis[j].classList.remove('on');
-                    conts[j].classList.remove('on');
-                }
-                lis[i].classList.add('on');
-                conts[i].classList.add('on');
-            })
-        }
-
-
     </script>
 
 
