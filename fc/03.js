@@ -386,15 +386,45 @@
             // console.log(solution(3, a));
 
             // /장난꾸러기
-            function solution(arr){
+            // function solution(arr){
+            //     let answer=[];
+            //     let sortArr=arr.slice();
+            //     sortArr.sort((a, b)=>a-b);
+            //     for(let i=0; i<arr.length; i++){
+            //         if(arr[i]!==sortArr[i]) answer.push(i+1);
+            //     }
+            //     return answer;
+            // }
+
+            // let arr=[120, 125, 152, 130, 135, 135, 143, 127, 160];
+            // console.log(solution(arr));
+            
+
+
+            // 가장짧은 거리 
+            function solution(s, t){
                 let answer=[];
-                let sortArr=arr.slice();
-                sortArr.sort((a, b)=>a-b);
-                for(let i=0; i<arr.length; i++){
-                    if(arr[i]!==sortArr[i]) answer.push(i+1);
+                let p=1000;
+                for(let x of s){
+                    if(x===t){
+                        p=0;
+                        answer.push(p);
+                    }
+                    else{
+                        p++;
+                        answer.push(p);
+                    }
+                }
+                p=1000;
+                for(let i=s.length-1; i>=0; i--){
+                    if(s[i]===t) p=0;
+                    else{
+                        p++;
+                        answer[i]=Math.min(answer[i], p);
+                    }
                 }
                 return answer;
             }
-
-            let arr=[120, 125, 152, 130, 135, 135, 143, 127, 160];
-            console.log(solution(arr));
+            
+            let str="teachermode";
+            console.log(solution(str, 'e'));
