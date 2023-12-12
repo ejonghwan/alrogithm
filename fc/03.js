@@ -449,18 +449,30 @@
 
 
         // 공주 구하기
-            function solution(n, k){
-                let answer;
-                let queue=Array.from({length:n}, (v, i)=>i+1); 
-                while(queue.length){
-                    for(let i=1; i<k; i++) queue.push(queue.shift());
-                    queue.shift();
-                    if(queue.length===1) answer=queue.shift();
-                }  
-                return answer;
-            }
+            // function solution(n, k){
+            //     let answer;
+            //     let queue=Array.from({length:n}, (v, i)=>i+1); 
+            //     while(queue.length){
+            //         for(let i=1; i<k; i++) queue.push(queue.shift());
+            //         queue.shift();
+            //         if(queue.length===1) answer=queue.shift();
+            //     }  
+            //     return answer;
+            // }
 
-            console.log(solution(8, 3));
+            // console.log(solution(8, 3));
+            
+
+            function solution(str){
+                let answer="";
+                for(let x of str){
+                    if(!isNaN(x)) answer+=x;
+                }  
+                return parseInt(answer);
+            }
+            
+            let str="g0en2T0s8eSoft";
+            console.log(solution(str));
 
 
 
