@@ -477,19 +477,37 @@
 
 
             // 최대매출
-            function solution(k, arr){
-                let answer, sum=0;
-                for(let i=0; i<k; i++) sum+=arr[i];
-                answer=sum;
-                for(let i=k; i<arr.length; i++){
-                    sum+=(arr[i]-arr[i-k]);
-                    answer=Math.max(answer, sum);
-                }                    
+            // function solution(k, arr){
+            //     let answer, sum=0;
+            //     for(let i=0; i<k; i++) sum+=arr[i];
+            //     answer=sum;
+            //     for(let i=k; i<arr.length; i++){
+            //         sum+=(arr[i]-arr[i-k]);
+            //         answer=Math.max(answer, sum);
+            //     }                    
+            //     return answer;
+            // }
+            
+            // let a=[12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+            // console.log(solution(3, a));
+
+
+            // 공주구하기
+            function solution(s){  
+                let answer;
+                let stack=[];
+                for(let x of s){
+                    if(x===')'){
+                        while(stack.pop()!=='(');
+                    }
+                    else stack.push(x);
+                }
+                answer=stack.join('');
                 return answer;
             }
-            
-            let a=[12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
-            console.log(solution(3, a));
+
+            let str="(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+            console.log(solution(str));
 
 
             
