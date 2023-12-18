@@ -536,16 +536,37 @@
 
 
             // 보이는 학생
-            function solution(arr){         
-                let answer=1, max=arr[0];
-                for(let i=1; i<arr.length; i++){
-                    if(arr[i]>max){
-                        answer++;
-                        max=arr[i];
+            // function solution(arr){         
+            //     let answer=1, max=arr[0];
+            //     for(let i=1; i<arr.length; i++){
+            //         if(arr[i]>max){
+            //             answer++;
+            //             max=arr[i];
+            //         }
+            //     }
+            //     return answer;
+            // }
+
+            // let arr=[130, 135, 148, 140, 145, 150, 150, 153];
+            // console.log(solution(arr));
+
+
+            // 쇠막대기
+
+            function solution(s){
+                let answer=0;
+                let stack=[];
+                for(let i=0; i<s.length; i++){
+                    if(s[i]==='(') stack.push('(');
+                    else{
+                        stack.pop(); 
+                        if(s[i-1]==='(') answer+=stack.length;
+                        else answer++;
+                        //stack.pop(); 이 위치에 하면 레이저까지 카운팅한다.
                     }
-                }
+                }                          
                 return answer;
             }
-
-            let arr=[130, 135, 148, 140, 145, 150, 150, 153];
-            console.log(solution(arr));
+            
+            let a="()(((()())(())()))(())";
+            console.log(solution(a));
