@@ -552,21 +552,46 @@
 
 
             // 쇠막대기
+            // function solution(s){
+            //     let answer=0;
+            //     let stack=[];
+            //     for(let i=0; i<s.length; i++){
+            //         if(s[i]==='(') stack.push('(');
+            //         else{
+            //             stack.pop(); 
+            //             if(s[i-1]==='(') answer+=stack.length;
+            //             else answer++;
+            //             //stack.pop(); 이 위치에 하면 레이저까지 카운팅한다.
+            //         }
+            //     }                          
+            //     return answer;
+            // }
+            
+            // let a="()(((()())(())()))(())";
+            // console.log(solution(a));
 
-            function solution(s){
-                let answer=0;
-                let stack=[];
-                for(let i=0; i<s.length; i++){
-                    if(s[i]==='(') stack.push('(');
-                    else{
-                        stack.pop(); 
-                        if(s[i-1]==='(') answer+=stack.length;
-                        else answer++;
-                        //stack.pop(); 이 위치에 하면 레이저까지 카운팅한다.
+
+            // 쇠막대기
+            function solution(n){
+                let answer=[];
+                let ch=Array.from({length:n+1}, ()=>0);
+                function DFS(L){
+                    if(L===n+1){
+                        let tmp="";
+                        for(let i=1; i<=n; i++){
+                            if(ch[i]===1) tmp+=(i+" ");
+                        }
+                        if(tmp.length>0) answer.push(tmp.trim());
                     }
-                }                          
+                    else{
+                        ch[L]=1;
+                        DFS(L+1);
+                        ch[L]=0;
+                        DFS(L+1);
+                    }
+                }
+                DFS(1);
                 return answer;
             }
-            
-            let a="()(((()())(())()))(())";
-            console.log(solution(a));
+
+            console.log(solution(3));
