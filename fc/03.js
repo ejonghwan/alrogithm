@@ -572,26 +572,39 @@
 
 
             // 쇠막대기
-            function solution(n){
-                let answer=[];
-                let ch=Array.from({length:n+1}, ()=>0);
-                function DFS(L){
-                    if(L===n+1){
-                        let tmp="";
-                        for(let i=1; i<=n; i++){
-                            if(ch[i]===1) tmp+=(i+" ");
-                        }
-                        if(tmp.length>0) answer.push(tmp.trim());
-                    }
-                    else{
-                        ch[L]=1;
-                        DFS(L+1);
-                        ch[L]=0;
-                        DFS(L+1);
-                    }
+            // function solution(n){
+            //     let answer=[];
+            //     let ch=Array.from({length:n+1}, ()=>0);
+            //     function DFS(L){
+            //         if(L===n+1){
+            //             let tmp="";
+            //             for(let i=1; i<=n; i++){
+            //                 if(ch[i]===1) tmp+=(i+" ");
+            //             }
+            //             if(tmp.length>0) answer.push(tmp.trim());
+            //         }
+            //         else{
+            //             ch[L]=1;
+            //             DFS(L+1);
+            //             ch[L]=0;
+            //             DFS(L+1);
+            //         }
+            //     }
+            //     DFS(1);
+            //     return answer;
+            // }
+
+            // console.log(solution(3));
+
+            // 10부제 
+            function solution(day, arr){
+                let answer=0;
+                for(let x of arr){
+                    if(x%10==day) answer++;
                 }
-                DFS(1);
+                
                 return answer;
             }
-
-            console.log(solution(3));
+            
+            arr=[25, 23, 11, 47, 53, 17, 33];
+            console.log(solution(3, arr));
