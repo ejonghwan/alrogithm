@@ -597,14 +597,31 @@
             // console.log(solution(3));
 
             // 10부제 
-            function solution(day, arr){
-                let answer=0;
-                for(let x of arr){
-                    if(x%10==day) answer++;
-                }
+            // function solution(day, arr){
+            //     let answer=0;
+            //     for(let x of arr){
+            //         if(x%10==day) answer++;
+            //     }
                 
+            //     return answer;
+            // }
+            
+            // arr=[25, 23, 11, 47, 53, 17, 33];
+            // console.log(solution(3, arr));
+
+
+
+            // 보이는 학생
+            function solution(arr){         
+                let answer=1, max=arr[0];
+                for(let i=1; i<arr.length; i++){
+                    if(arr[i]>max){
+                        answer++;
+                        max=arr[i];
+                    }
+                }
                 return answer;
             }
-            
-            arr=[25, 23, 11, 47, 53, 17, 33];
-            console.log(solution(3, arr));
+
+            let arr=[130, 135, 148, 140, 145, 150, 150, 153];
+            console.log(solution(arr));
