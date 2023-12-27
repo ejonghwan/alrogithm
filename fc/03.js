@@ -667,26 +667,50 @@
 
 
             // 합이 같은 부분 집함
-            function solution(arr){
-                let answer="NO", flag=0;
-                let total=arr.reduce((a, b)=>a+b, 0);
-                let n=arr.length;
-                function DFS(L, sum){
-                    if(flag) return;
-                    if(L===n){
-                        if((total-sum)===sum){
-                            answer="YES";
-                            flag=1;
+            // function solution(arr){
+            //     let answer="NO", flag=0;
+            //     let total=arr.reduce((a, b)=>a+b, 0);
+            //     let n=arr.length;
+            //     function DFS(L, sum){
+            //         if(flag) return;
+            //         if(L===n){
+            //             if((total-sum)===sum){
+            //                 answer="YES";
+            //                 flag=1;
+            //             }
+            //         }
+            //         else{
+            //             DFS(L+1, sum+arr[L]);
+            //             DFS(L+1, sum);
+            //         }
+            //     }
+            //     DFS(0, 0);
+            //     return answer;
+            // }
+
+            // let arr=[1, 3, 5, 6, 7, 10];
+            // console.log(solution(arr));
+
+
+            // 졸업선물
+            function solution(m, product){
+                let answer=0;
+                let n=product.length;
+                product.sort((a, b)=>(a[0]+a[1])-(b[0]+b[1]));
+                for(let i=0; i<n; i++){
+                    let money=m-(product[i][0]/2+product[i][1]);
+                    let cnt=1;
+                    for(let j=0; j<n; j++){
+                        if(j!==i && (product[j][0]+product[j][1])>money) break;
+                        if(j!==i && (product[j][0]+product[j][1])<=money){
+                            money-=(product[j][0]+product[j][1]);
+                            cnt++;
                         }
                     }
-                    else{
-                        DFS(L+1, sum+arr[L]);
-                        DFS(L+1, sum);
-                    }
-                }
-                DFS(0, 0);
+                    answer=Math.max(answer, cnt);
+                }  
                 return answer;
             }
-
-            let arr=[1, 3, 5, 6, 7, 10];
-            console.log(solution(arr));
+            
+            let arr=[[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+            console.log(solution(28, arr));
