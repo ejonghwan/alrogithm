@@ -743,44 +743,66 @@
 
 
             // 섬나라 아일랜드 
-            function solution(board){  
-                let answer=0;
-                let n=board.length;
-                let dx=[-1, -1, 0, 1, 1, 1, 0, -1];
-                let dy=[0, 1, 1, 1, 0, -1, -1, -1];
-                let queue=[];
-                for(let i=0; i<n; i++){
-                    for(let j=0; j<n; j++){
-                        if(board[i][j]===1){
-                            board[i][j]=0;
-                            queue.push([i, j]);
-                            answer++;
-                            while(queue.length){
-                                let x=queue.shift();
-                                for(let k=0; k<8; k++){
-                                    let nx=x[0]+dx[k];
-                                    let ny=x[1]+dy[k];
-                                    if(nx>=0 && nx<n && ny>=0 && ny<n && board[nx][ny]===1){
-                                        board[nx][ny]=0;
-                                        queue.push([nx, ny]);
-                                    }
-                                }
-                            }
+            // function solution(board){  
+            //     let answer=0;
+            //     let n=board.length;
+            //     let dx=[-1, -1, 0, 1, 1, 1, 0, -1];
+            //     let dy=[0, 1, 1, 1, 0, -1, -1, -1];
+            //     let queue=[];
+            //     for(let i=0; i<n; i++){
+            //         for(let j=0; j<n; j++){
+            //             if(board[i][j]===1){
+            //                 board[i][j]=0;
+            //                 queue.push([i, j]);
+            //                 answer++;
+            //                 while(queue.length){
+            //                     let x=queue.shift();
+            //                     for(let k=0; k<8; k++){
+            //                         let nx=x[0]+dx[k];
+            //                         let ny=x[1]+dy[k];
+            //                         if(nx>=0 && nx<n && ny>=0 && ny<n && board[nx][ny]===1){
+            //                             board[nx][ny]=0;
+            //                             queue.push([nx, ny]);
+            //                         }
+            //                     }
+            //                 }
                             
+            //             }
+            //         }
+            //     }
+            //     return answer;
+            // }
+
+            // let arr=[[1, 1, 0, 0, 0, 1, 0], 
+            //          [0, 1, 1, 0, 1, 1, 0],
+            //          [0, 1, 0, 0, 0, 0, 0],
+            //          [0, 0, 0, 1, 0, 1, 1],
+            //          [1, 1, 0, 1, 1, 0, 0],
+            //          [1, 0, 0, 0, 1, 0, 0],
+            //          [1, 0, 1, 0, 1, 0, 0]];
+
+            // console.log(solution(arr));
+
+            function solution(s, e){  
+                let answer=0;
+                let ch=Array.from({length:10001}, ()=>0);
+                let dis=Array.from({length:10001}, ()=>0);
+                let queue=[];
+                queue.push(s);
+                ch[s]=1;
+                dis[s]=0;
+                while(queue.length){
+                    let x=queue.shift();
+                    for(let nx of [x-1, x+1, x+5]){
+                        if(nx===e) return dis[x]+1;
+                        if(nx>0 && nx<=10000 && ch[nx]===0){
+                            ch[nx]=1;
+                            queue.push(nx);
+                            dis[nx]=dis[x]+1;
                         }
                     }
                 }
                 return answer;
             }
 
-            let arr=[[1, 1, 0, 0, 0, 1, 0], 
-                     [0, 1, 1, 0, 1, 1, 0],
-                     [0, 1, 0, 0, 0, 0, 0],
-                     [0, 0, 0, 1, 0, 1, 1],
-                     [1, 1, 0, 1, 1, 0, 0],
-                     [1, 0, 0, 0, 1, 0, 0],
-                     [1, 0, 1, 0, 1, 0, 0]];
-
-            console.log(solution(arr));
-
-            
+            console.log(solution(8, 3));
