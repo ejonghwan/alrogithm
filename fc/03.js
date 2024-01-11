@@ -887,22 +887,51 @@
             // console.log(solution(arr));
 
 
-            function solution(n, k, card){
-                let answer;
-                let tmp = new Set();
-                for(let i=0; i<n; i++){
-                    for(let j=i+1; j<n; j++){
-                        for(let k=j+1; k<n; k++){
-                            tmp.add(card[i]+card[j]+card[k]);
+            // function solution(n, k, card){
+            //     let answer;
+            //     let tmp = new Set();
+            //     for(let i=0; i<n; i++){
+            //         for(let j=i+1; j<n; j++){
+            //             for(let k=j+1; k<n; k++){
+            //                 tmp.add(card[i]+card[j]+card[k]);
+            //             }
+            //         }
+            //     }
+            //     let a=Array.from(tmp).sort((a, b)=>b-a);
+            //     answer=a[k-1];
+            //     return answer;
+            // }
+            
+            // let arr=[13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+            // console.log(solution(10, 3, arr));
+            
+            // 후위식 인형뽑기
+            function solution(board, moves){
+                let answer=0;
+                let stack=[];
+                moves.forEach(pos => {
+                    for(let i=0; i<board.length; i++){
+                        if(board[i][pos-1]!==0){
+                            let tmp=board[i][pos-1];
+                            board[i][pos-1]=0;
+                            if(tmp===stack[stack.length-1]){
+                                stack.pop();
+                                answer+=2;
+                            }
+                            else stack.push(tmp);
+                            break;
                         }
                     }
-                }
-                let a=Array.from(tmp).sort((a, b)=>b-a);
-                answer=a[k-1];
+                });
+                                
                 return answer;
             }
             
-            let arr=[13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
-            console.log(solution(10, 3, arr));
-            
+            let a=[[0,0,0,0,0],
+                   [0,0,1,0,3],
+                   [0,2,5,0,1],
+                   [4,2,4,4,2],
+                   [3,5,1,3,1]];
 
+            let b=[1, 5, 3, 5, 1, 2, 1, 4];
+            console.log(solution(a, b));
