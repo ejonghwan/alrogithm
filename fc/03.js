@@ -939,35 +939,52 @@
 
 
             // 미로탐색
-            function solution(board){  
-                let answer=0;
-                let dx=[-1, 0, 1, 0];
-                let dy=[0, 1, 0, -1];
-                function DFS(x, y){
-                    if(x===6 && y===6) answer++;
-                    else{
-                        for(let k=0; k<4; k++){
-                            let nx=x+dx[k];
-                            let ny=y+dy[k];
-                            if(nx>=0 && nx<=6 && ny>=0 && ny<=6 && board[nx][ny]===0){
-                                board[nx][ny]=1;
-                                DFS(nx, ny);
-                                board[nx][ny]=0;
-                            }
-                        }
+            // function solution(board){  
+            //     let answer=0;
+            //     let dx=[-1, 0, 1, 0];
+            //     let dy=[0, 1, 0, -1];
+            //     function DFS(x, y){
+            //         if(x===6 && y===6) answer++;
+            //         else{
+            //             for(let k=0; k<4; k++){
+            //                 let nx=x+dx[k];
+            //                 let ny=y+dy[k];
+            //                 if(nx>=0 && nx<=6 && ny>=0 && ny<=6 && board[nx][ny]===0){
+            //                     board[nx][ny]=1;
+            //                     DFS(nx, ny);
+            //                     board[nx][ny]=0;
+            //                 }
+            //             }
+            //         }
+            //     }
+            //     board[0][0]=1;
+            //     DFS(0, 0);
+            //     return answer;
+            // }
+
+            // let arr=[[0, 0, 0, 0, 0, 0, 0], 
+            //          [0, 1, 1, 1, 1, 1, 0],
+            //          [0, 0, 0, 1, 0, 0, 0],
+            //          [1, 1, 0, 1, 0, 1, 1],
+            //          [1, 1, 0, 0, 0, 0, 1],
+            //          [1, 1, 0, 1, 1, 0, 0],
+            //          [1, 0, 0, 0, 0, 0, 0]];
+
+            // console.log(solution(arr));
+
+
+            // 연속 부분 수열 
+            function solution(m, arr){
+                let answer=0, sum=0, lt=0;
+                for(let rt=0; rt<arr.length; rt++){
+                    sum+=arr[rt];
+                    while(sum>m){
+                        sum-=arr[lt++];
                     }
-                }
-                board[0][0]=1;
-                DFS(0, 0);
+                    answer+=(rt-lt+1);
+                }               
                 return answer;
             }
-
-            let arr=[[0, 0, 0, 0, 0, 0, 0], 
-                     [0, 1, 1, 1, 1, 1, 0],
-                     [0, 0, 0, 1, 0, 0, 0],
-                     [1, 1, 0, 1, 0, 1, 1],
-                     [1, 1, 0, 0, 0, 0, 1],
-                     [1, 1, 0, 1, 1, 0, 0],
-                     [1, 0, 0, 0, 0, 0, 0]];
-
-            console.log(solution(arr));
+            
+            let a=[1, 3, 1, 2, 3];
+            console.log(solution(5, a));
