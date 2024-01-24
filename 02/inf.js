@@ -65,10 +65,65 @@ const log = console.log;
 // 첫번째 줄에 필요한 다스 수를 출력. 한다스 12개
 // 12/25 2..24
 
+// const a = (n) => {
+//     let answer = Math.ceil(n / 12);
+//     return answer
+// }
+// log( a(25) )
+
+
+
+// ##################################################################################################
+
+// 누적
+// const a = (n) => {
+//     let answer = 0;
+//     for(let i = 0; i <= n; i++) {
+//         answer = answer + i
+//     }
+//     return answer
+// }
+// log( a(6) )
+
+
+// ##################################################################################################
+
+// 미니멈
+// const a = (n) => {
+//     let answer;
+//     let min = 100;
+
+//     for(let i = 0; i < n.length; i++) {
+//         if(n[i] < min) min = n[i]
+//     }
+//     answer = min;
+
+    
+
+//     return answer
+// }
+// log( a([5,7,1,3,2,9,11]) )
+
+
+
+// ##################################################################################################
+
+// 누적
 const a = (n) => {
-    let answer = Math.ceil(n / 12);
+    let answer;
+    let min = 100;
+
+    for(let i = 0; i < n.length; i++) {
+        if(n[i] < min) min = n[i]
+    }
+    answer = min;
+
+    
+
     return answer
 }
-log( a(25) )
+log( a([5,7,1,3,2,9,11]) )
+
+
 
 
