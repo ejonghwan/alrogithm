@@ -109,20 +109,20 @@ const log = console.log;
 // ##################################################################################################
 
 // 누적
-const a = (n) => {
-    let answer;
-    let min = 100;
+// const a = (n) => {
+//     let answer;
+//     let min = 100;
 
-    for(let i = 0; i < n.length; i++) {
-        if(n[i] < min) min = n[i]
-    }
-    answer = min;
+//     for(let i = 0; i < n.length; i++) {
+//         if(n[i] < min) min = n[i]
+//     }
+//     answer = min;
 
     
 
-    return answer
-}
-log( a([5,7,1,3,2,9,11]) )
+//     return answer
+// }
+// log( a([5,7,1,3,2,9,11]) )
 
 
 
