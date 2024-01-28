@@ -127,3 +127,38 @@ const log = console.log;
 
 
 
+
+//핵심!
+// 첫번째 인자 fn을 받는 것 자체가 특정 구간에서 그 함수를 실행하고
+// fn(acc, a) 특정 값자체를 위임해줘서 함수에 전달해줌.
+// 그 실행한 값을 acc에 담아 최종적으로 acc를 리턴해줌.
+
+const _reduce = (...args) => {
+    let [ fn, acc, iter ] = args;
+    if(args.length === 2) {
+        iter = iter[Symbol.iterator]();
+        acc = iter.next().value;
+    }
+
+    for(const a of iter) {
+        acc = fn(acc, a) //함수실행할때 acc누적값과 a를 다 넘김. 그걸 acc에 담음
+    }
+
+    return acc;
+}
+
+
+const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age: 50 }, { name: 'dd', age: 60 }, ]
+// _reduce((acc, list) => {}, arr, arr )
+
+const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs);
+
+console.log(
+    _go(
+        arr,
+        x => x.filter(t => t.age > 50)
+    )
+)
+
+
+
