@@ -133,20 +133,50 @@ const log = console.log;
 // fn(acc, a) 특정 값자체를 위임해줘서 함수에 전달해줌.
 // 그 실행한 값을 acc에 담아 최종적으로 acc를 리턴해줌.
 
+// const _reduce = (...args) => {
+//     let [ fn, acc, iter ] = args;
+//     if(args.length === 2) {
+//         iter = iter[Symbol.iterator]();
+//         acc = iter.next().value;
+//     }
+
+//     for(const a of iter) {
+//         acc = fn(acc, a) //함수실행할때 acc누적값과 a를 다 넘김. 그걸 acc에 담음
+//     }
+
+//     return acc;
+// }
+
+
+// const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age: 50 }, { name: 'dd', age: 60 }, ]
+// // _reduce((acc, list) => {}, arr, arr )
+
+// const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs);
+
+// console.log(
+//     _go(
+//         arr,
+//         x => x.filter(t => t.age > 50)
+//     )
+// )
+
+
+
+
+
+
 const _reduce = (...args) => {
-    let [ fn, acc, iter ] = args;
+    let [fn, acc, iter] = args;
     if(args.length === 2) {
         iter = iter[Symbol.iterator]();
-        acc = iter.next().value;
+        acc = iter.naxt().value;
     }
 
     for(const a of iter) {
-        acc = fn(acc, a) //함수실행할때 acc누적값과 a를 다 넘김. 그걸 acc에 담음
+        acc = fn(acc, a)
     }
-
     return acc;
 }
-
 
 const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age: 50 }, { name: 'dd', age: 60 }, ]
 // _reduce((acc, list) => {}, arr, arr )
@@ -159,6 +189,3 @@ console.log(
         x => x.filter(t => t.age > 50)
     )
 )
-
-
-
