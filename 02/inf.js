@@ -165,27 +165,27 @@ const log = console.log;
 
 
 
-const _reduce = (...args) => {
-    let [fn, acc, iter] = args;
-    if(args.length === 2) {
-        iter = iter[Symbol.iterator]();
-        acc = iter.naxt().value;
-    }
+// const _reduce = (...args) => {
+//     let [fn, acc, iter] = args;
+//     if(args.length === 2) {
+//         iter = iter[Symbol.iterator]();
+//         acc = iter.naxt().value;
+//     }
 
-    for(const a of iter) {
-        acc = fn(acc, a)
-    }
-    return acc;
-}
+//     for(const a of iter) {
+//         acc = fn(acc, a)
+//     }
+//     return acc;
+// }
 
-const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age: 50 }, { name: 'dd', age: 60 }, ]
-// _reduce((acc, list) => {}, arr, arr )
+// const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age: 50 }, { name: 'dd', age: 60 }, ]
+// // _reduce((acc, list) => {}, arr, arr )
 
-const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs);
+// const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs);
 
-console.log(
-    _go(
-        arr,
-        x => x.filter(t => t.age > 50)
-    )
-)
+// console.log(
+//     _go(
+//         arr,
+//         x => x.filter(t => t.age > 50)
+//     )
+// )
