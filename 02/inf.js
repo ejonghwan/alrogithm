@@ -194,21 +194,3 @@ console.log(
 
 
 
-
-class B {
-    constructor(data) {
-        this.data = data;
-        
-    }
-
-
-    run() {
-        console.log('run')
-        this.data.map(item => item)
-    }
-}
-
-
-const b = new B(['aa', 'bb', 'cc'])
-
-console.log('b?', b)
