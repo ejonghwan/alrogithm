@@ -183,12 +183,12 @@ const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age
 
 const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs);
 
-// console.log(
-//     _go(
-//         arr,
-//         x => x.filter(t => t.age > 50)
-//     )
-// )
+console.log(
+    _go(
+        arr,
+        x => x.filter(t => t.age > 50)
+    )
+)
 
 
 
