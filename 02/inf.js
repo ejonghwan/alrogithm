@@ -179,7 +179,7 @@ const _reduce = (...args) => {
 }
 
 const arr = [{ name: 'aa', age: 30 }, { name: 'bb', age: 40 }, { name: 'cc', age: 50 }, { name: 'dd', age: 60 }, ]
-// _reduce((acc, list) => {}, arr, arr )
+_reduce((acc, list) => {}, arr, arr )
 
 const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs);
 
